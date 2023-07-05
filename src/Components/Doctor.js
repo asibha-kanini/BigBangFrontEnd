@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import { variable } from './Variable';
 import './Doctor.css';
@@ -18,8 +19,8 @@ export class Doctor extends Component {
         docImg: ''
       },
       selectedDoctor: null,
-      searchQuery: '', // Define searchQuery in the component state
-      filterOption: '' // Define filterOption in the component state
+      searchQuery: '',
+      filterOption: ''
     };
   }
 
@@ -134,8 +135,9 @@ export class Doctor extends Component {
   };
 
   handleFilterChange = (event) => {
+    const filterOption = event.target.value; // Update the filterOption state
     this.setState(
-      { filterOption: event.target.value },
+      { filterOption },
       () => this.fetchDoctor() // Fetch doctors after updating the filter option
     );
   };
@@ -149,9 +151,9 @@ export class Doctor extends Component {
           {/* Add filter dropdown */}
           <select value={filterOption} onChange={this.handleFilterChange}>
             <option value="">All</option>
-            <option value="Dentist">Dentist</option>
-            <option value="Cardiologist">Cardiologist</option>
-            <option value="Pediatrician">Pediatrician</option>
+            <option value="ENT">ENT</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Neurologist">Neurologist</option>
             {/* Add more options for different specialties */}
           </select>
         </div>
@@ -250,3 +252,4 @@ export class Doctor extends Component {
 }
 
 export default Doctor;
+

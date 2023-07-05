@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { variable } from './Variable';
 import './Patients.css';
+import { Link } from 'react-router-dom';
 
 export class Patient extends Component {
   constructor(props) {
@@ -102,6 +103,12 @@ export class Patient extends Component {
                 <p>Description: {item.patientDescription}</p>
               </div>
             </div>
+            <Link
+                  to="/appointments"
+                  className="btn book-appointment-btn"
+                >
+                  Book the appointment
+                </Link>
           </div>
         ))}
       </div>

@@ -152,7 +152,7 @@ export class Doctor extends Component {
   ))}
 </div>
 
-<h1 className="post">POST</h1>
+<h1 className="post">Admin </h1>
 <div className="card">
   <form onSubmit={this.addDoctor} className="container">
     <input

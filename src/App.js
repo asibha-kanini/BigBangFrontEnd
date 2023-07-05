@@ -12,6 +12,8 @@ import'./Navbar.css';
 import Appointments from './Components/Appointments';
 
 
+
+
 function Navbar() {
   return (
     <nav>
@@ -19,9 +21,7 @@ function Navbar() {
         <li>
           <NavLink to="/Home">Home</NavLink>
         </li>
-        <li>
-          <NavLink to="/Register">Register</NavLink>
-        </li>
+        
         <li>
           <NavLink to="/login">Login</NavLink>
         </li>
@@ -38,6 +38,7 @@ function Navbar() {
         <li>
           <NavLink to="/Patients">Patients</NavLink>
         </li>
+       
        
         <li>
           <NavLink to="/login">Logout</NavLink>
@@ -61,6 +62,7 @@ function App() {
           <Route path="/Admin" element={<Admin/>} />
           <Route path="/Patients" element={<Patients/>} />
           <Route path="/Appointments"element={<Appointments/>}/>
+  
          
           
 

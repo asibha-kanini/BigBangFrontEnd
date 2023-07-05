@@ -2,52 +2,66 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import './Login.css';
+import axios from 'axios'
 
 
 export default function Login() {
   const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const [role, setrole] = useState('');
+  
   const navigate = useNavigate();
 
   useEffect(() => {
-    sessionStorage.clear();
+   
   }, []);
 
   const proceedLoginUsingAPI = (e) => {
     e.preventDefault();
     if (validate()) {
       let inputObj = {
-        adminEmail: userEmail,
+        adminName: userEmail,
         adminPassword: password
       };
-    
-
-      fetch("https://localhost:7171/api/Login/Admin", {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(inputObj)
-      })
-        .then((res) => res.text())
-        .then((resp) => {
-            console.log(resp)
-            console.log(inputObj)
-          localStorage.setItem('token', 234);
-          localStorage.setItem('userEmail', userEmail);
-          toast.success('Login Successful');
-          navigate('/Admin');
+      if(role==='Admin')
+      {
+        console.log(role)
+        axios.post('https://localhost:7171/api/Login/Admin', inputObj)
+        .then(response => {
+          localStorage.setItem('Admin_Token',response.data)
         })
-        .catch((err) => {
-          toast.error('Login Failed: ' + err.message);
+        .catch(error => {
+         alert('Invalid credentials!!')
         });
-//     axios.post('https://localhost:7171/api/Login/Admin', inputObj)
-//   .then(response => {
-//     console.log(response.data);
-//     console.log(inputObj)
-//   })
-//   .catch(error => {
-//     console.log(inputObj)
-//     console.error(error);
-//   });
+      }
+      else if(role==='Patient')
+      {
+        console.log(role)
+        axios.post('https://localhost:7171/api/Login/Patient', {
+            patientEmail:inputObj.adminName,
+            patientPass:inputObj.adminPassword
+        })
+        .then(response => {
+          localStorage.setItem('Patient_Token',response.data)
+        })
+        .catch(error => {
+         alert('Invalid credentials!!')
+        });
+      }
+      else{
+        console.log("this",role)
+        axios.post('https://localhost:7171/api/Login/Doctor', {
+            docEmail:inputObj.adminName,
+            docPas:inputObj.adminPassword
+        })
+        .then(response => {
+          localStorage.setItem('Doctor_Token',response.data)
+        })
+        .catch(error => {
+         alert('Invalid credentials!!')
+        });
+      }
     }
   };
 
@@ -93,7 +107,7 @@ export default function Login() {
               <div className="col-lg-6">
                 <div className="form-group">
                   <label>User Type <span className="errmsg">*</span></label>
-                  <select>
+                  <select value={role}  onChange={(e) => setrole(e.target.value)}>
                     <option value="Admin">Admin</option>
                     <option value="Doctor">Doctor</option>
                     <option value="Patient">Patient</option>

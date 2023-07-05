@@ -47,4 +47,28 @@
   .successmsg {
     color: green;
   }
+  .appointment-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .appointment-card {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .appointment-card h3 {
+    margin-top: 0;
+  }
+  
+  .appointment-card div {
+    margin-bottom: 10px;
+  }
+  
+  .appointment-card strong {
+    font-weight: bold;
+  }
+  
   
