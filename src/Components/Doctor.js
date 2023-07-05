@@ -28,7 +28,15 @@ export class Doctor extends Component {
   }
 
   fetchDoctor() {
-    fetch(variable.API_URL + 'Doctors')
+    const { filterOption } = this.state;
+    let url = variable.API_URL + 'Doctors';
+
+    // Add filter query parameter if a filter option is selected
+    if (filterOption) {
+      url += `?docSpecialty=${filterOption}`;
+    }
+
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
         this.setState({ Doctor: data });
@@ -119,7 +127,9 @@ export class Doctor extends Component {
   };
 
   editDoctor = (id) => {
-    const selectedDoctor = this.state.Doctor.find((doctor) => doctor.docId === id);
+    const selectedDoctor = this.state.Doctor.find(
+      (doctor) => doctor.docId === id
+    );
     this.setState({ selectedDoctor });
   };
 
@@ -131,10 +141,21 @@ export class Doctor extends Component {
   };
 
   render() {
-    const { Doctor, newDoctor, selectedDoctor } = this.state;
+    const { Doctor, newDoctor, selectedDoctor, filterOption } = this.state;
 
     return (
       <div>
+        <div>
+          {/* Add filter dropdown */}
+          <select value={filterOption} onChange={this.handleFilterChange}>
+            <option value="">All</option>
+            <option value="Dentist">Dentist</option>
+            <option value="Cardiologist">Cardiologist</option>
+            <option value="Pediatrician">Pediatrician</option>
+            {/* Add more options for different specialties */}
+          </select>
+        </div>
+
         <div className="container">
           {Doctor.map((item) => (
             <div key={item.docId} className="card">
@@ -157,12 +178,30 @@ export class Doctor extends Component {
               </div>
               <div className="card-actions">
                 {selectedDoctor && selectedDoctor.docId === item.docId ? (
-                  <button onClick={() => this.editDoctor(null)} className='button'>Save</button>
+                  <button
+                    onClick={() => this.editDoctor(null)}
+                    className="button"
+                  >
+                    Save
+                  </button>
                 ) : (
-                  <button onClick={() => this.editDoctor(item.docId)} className='button'>Edit</button>
+                  <button
+                    onClick={() => this.editDoctor(item.docId)}
+                    className="button"
+                  >
+                    Edit
+                  </button>
                 )}
-                <button onClick={() => this.deleteDoctor(item.docId)} className='btn'>Delete</button>
-                <Link to="/appointments" className="btn book-appointment-btn">
+                <button
+                  onClick={() => this.deleteDoctor(item.docId)}
+                  className="btn"
+                >
+                  Delete
+                </button>
+                <Link
+                  to="/appointments"
+                  className="btn book-appointment-btn"
+                >
                   Book
                 </Link>
               </div>
@@ -180,7 +219,8 @@ export class Doctor extends Component {
               onChange={this.handleInputChange}
               placeholder="Doctor Name"
               required
-            /><br />
+            />
+            <br />
             <input
               type="text"
               name="docSpecialty"
@@ -188,7 +228,8 @@ export class Doctor extends Component {
               onChange={this.handleInputChange}
               placeholder="Specialty"
               required
-            /><br />
+            />
+            <br />
             <input
               type="email"
               name="docEmail"
@@ -196,8 +237,11 @@ export class Doctor extends Component {
               onChange={this.handleInputChange}
               placeholder="Email"
               required
-            /><br />
-            <button type="submit" className="add">Add Doctor</button>
+            />
+            <br />
+            <button type="submit" className="add">
+              Add Doctor
+            </button>
           </form>
         </div>
       </div>
