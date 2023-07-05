@@ -1,13 +1,9 @@
-const reportWebVitals = onPerfEntry => {
-  if (onPerfEntry && onPerfEntry instanceof Function) {
-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(onPerfEntry);
-      getFID(onPerfEntry);
-      getFCP(onPerfEntry);
-      getLCP(onPerfEntry);
-      getTTFB(onPerfEntry);
-    });
-  }
-};
+import React, { Component } from 'react'
 
-export default reportWebVitals;
+export default class reportWebVitals extends Component {
+  render() {
+    return (
+      <div>reportWebVitals</div>
+    )
+  }
+}

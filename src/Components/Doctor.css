@@ -1,0 +1,194 @@
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f2f2f2;
+  }
+  
+  img {
+    max-width: 600px;
+    max-height: 500px;
+  }
+  .post {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+  
+  .container form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  
+  .container form input {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .container form button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .container form button:hover {
+    background-color: #0056b3;
+  }
+  
+  .container form input[type="text"],
+  .container form input[type="email"] {
+    width: 300px;
+  }
+  
+  .container form button[type="submit"] {
+    width: 150px;
+    margin-top: 10px;
+  }
+  
+  /* styles.css */
+
+.button {
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.botton1 {
+  background-color: #f44336;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Optionally, you can add styles for the container and card elements */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.card {
+  background-color: #f0f0f0;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 8px;
+}
+
+.card-content {
+  margin-bottom: 8px;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+/* styles.css */
+
+.card {
+  background-color: #f0f0f0;
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 16px;
+}
+
+.post {
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+.add:hover {
+ color: #ddd;
+ 
+  
+}
+.container {
+  margin-top: 50px;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.card input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.card button {
+
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add {
+  margin-top: 10px;
+  background-color: #007bff;
+}
+
+.post {
+  text-align: center;
+}
+.btn{
+  background-color: #f44336;
+}
+.btn {
+  /* Add your general button styles here */
+  display: inline-block;
+  padding: 8px 16px;
+  border: none;
+  background-color: #ff0000;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.book-appointment-btn {
+  /* Add specific styles for the book appointment button */
+  /* For example, you can change the background color and add margin */
+  background-color: #242628;
+ 
+  margin-top: 10px;
+}
